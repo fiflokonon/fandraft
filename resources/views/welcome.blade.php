@@ -24,7 +24,7 @@
         }
 
         body {
-            font-family: Montserrat, 'regular', serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: var(--gray-dark);
             overflow-x: hidden;
@@ -332,7 +332,233 @@
             color: var(--orange);
         }
 
-        /* Mobile App Preview with Enhanced Animation */
+        /* App Screenshots Slider */
+        .app-screenshots-slider {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .slider-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--gray-dark);
+            aspect-ratio: 9/19.5; /* Ratio iPhone */
+        }
+
+        .screenshot-frame {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .slide:hover .screenshot-img {
+            transform: scale(1.02);
+        }
+
+        .screenshot-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .slide:hover .screenshot-overlay {
+            transform: translateY(0);
+        }
+
+        .screenshot-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--yellow);
+        }
+
+        .screenshot-overlay p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* Navigation Buttons */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+            pointer-events: none;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: all;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 107, 53, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Dots Indicator */
+        .slider-dots {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(4, 83, 77, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--orange);
+            transform: scale(1.2);
+            box-shadow: 0 2px 10px rgba(255, 107, 53, 0.4);
+        }
+
+        .dot:hover {
+            background: var(--primary-green);
+            transform: scale(1.1);
+        }
+
+        /* Slider Description */
+        .slider-description {
+            text-align: center;
+            max-width: 500px;
+            margin-top: 1rem;
+        }
+
+        .slider-description p {
+            background: linear-gradient(135deg, var(--light-green), #b8d4d7);
+            padding: 1.5rem;
+            border-radius: 15px;
+            color: var(--primary-green);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin: 0;
+            border-left: 4px solid var(--orange);
+        }
+
+        /* Auto-play indicator */
+        .autoplay-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--orange);
+            transition: width 0.1s linear;
+            opacity: 0.7;
+        }
+
+        /* Mobile optimizations for slider */
+        @media (max-width: 768px) {
+            .slider-container {
+                max-width: 300px;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .slider-nav {
+                padding: 0 0.5rem;
+            }
+
+            .screenshot-overlay {
+                padding: 1.5rem 1rem 1rem;
+            }
+
+            .screenshot-overlay h4 {
+                font-size: 1rem;
+            }
+
+            .screenshot-overlay p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .slider-container {
+                max-width: 280px;
+            }
+
+            .nav-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .slider-description p {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+        }
         .app-preview {
             padding: 100px 0;
             background: linear-gradient(45deg, var(--white), var(--light-green));
@@ -400,9 +626,189 @@
             transform: translateY(-50%) scale(1.2);
         }
 
+        .phone-mockups {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            position: relative;
+        }
+
+        .phone {
+            width: 220px;
+            height: 440px;
+            background: linear-gradient(145deg, var(--gray-dark), #1a1a1a);
+            border-radius: 35px;
+            padding: 25px 18px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            transition: all 0.5s ease;
+        }
+
+        .phone:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+
+        .phone:nth-child(1) {
+            animation: bounce 4s ease-in-out infinite;
+        }
+
+        .phone:nth-child(2) {
+            animation: bounce 4s ease-in-out infinite 2s;
+        }
+
+        .phone::before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 8px;
+            background: var(--gray-medium);
+            border-radius: 4px;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .screen-content {
+            padding: 25px 20px;
+            height: 100%;
+            position: relative;
+        }
+
+        .screen-header {
+            background: linear-gradient(135deg, var(--primary-green), #065a54);
+            color: white;
+            padding: 20px;
+            margin: -25px -20px 25px;
+            text-align: center;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
         @keyframes shimmer {
             0% { left: -100%; }
             100% { left: 100%; }
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, var(--light-green), #c5d8db);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .player-card:hover::before {
+            opacity: 1;
+        }
+
+        .player-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(4, 83, 77, 0.2);
+        }
+
+        .player-avatar {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-green), var(--orange));
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .player-avatar::before {
+            content: "👤";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .player-card:hover .player-avatar {
+            transform: rotateY(360deg) scale(1.1);
+        }
+
+        .player-name {
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .player-stats {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.8);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: var(--orange);
+            font-size: 1.2rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--gray-medium);
         }
 
         /* Basketball Court SVG Background */
@@ -656,6 +1062,16 @@
                 grid-template-columns: 1fr;
             }
 
+            .phone-mockups {
+                flex-direction: row;
+                gap: 1rem;
+            }
+
+            .phone {
+                width: 180px;
+                height: 360px;
+            }
+
             .section-title {
                 font-size: 2.2rem;
             }
@@ -726,6 +1142,7 @@
             border-radius: 1px;
             transform: translateX(-50%);
         }
+
         @keyframes swoosh {
             0% { transform: translateX(-100%); opacity: 0; }
             50% { opacity: 1; }
@@ -750,9 +1167,32 @@
         }
 
         /* Enhanced Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .app-content {
+                gap: 3rem;
+            }
+
+            .screenshots-container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
             }
 
             .hero h1 {
@@ -761,6 +1201,12 @@
 
             .hero p {
                 font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
             }
 
             .app-content {
@@ -768,12 +1214,31 @@
                 gap: 2rem;
             }
 
+            .screenshots-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .screenshot-placeholder {
+                padding: 2rem;
+                min-height: 180px;
+            }
+
+            .screenshot-icon {
+                font-size: 2.5rem;
+            }
+
             .section-title {
                 font-size: 2.2rem;
+                margin-bottom: 2rem;
             }
 
             .app-text h2::before {
                 display: none;
+            }
+
+            .app-text h2 {
+                font-size: 2.2rem;
             }
 
             .floating-basketball {
@@ -800,8 +1265,18 @@
 
             .features-grid,
             .audience-grid {
-                grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .features,
+            .app-preview,
+            .target-audience,
+            .impact {
+                padding: 60px 0;
+            }
+
+            footer {
+                padding: 40px 0 20px;
             }
         }
 
@@ -810,9 +1285,13 @@
                 font-size: 2rem;
             }
 
-            .cta-button {
-                padding: 1rem 2rem;
+            .hero p {
                 font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
             }
 
             .section-title {
@@ -820,7 +1299,81 @@
             }
 
             .app-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .screenshot-placeholder {
+                padding: 1.5rem;
+                min-height: 160px;
+            }
+
+            .screenshot-icon {
                 font-size: 2rem;
+            }
+
+            .screenshot-placeholder h4 {
+                font-size: 1.1rem;
+            }
+
+            .screenshot-placeholder p {
+                font-size: 0.9rem;
+            }
+
+            .features-grid,
+            .audience-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card,
+            .audience-card {
+                padding: 2rem;
+            }
+
+            .impact-item h3 {
+                font-size: 2rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .language-toggle {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshot-placeholder {
+                padding: 1rem;
+                min-height: 140px;
             }
         }
     </style>
@@ -833,7 +1386,7 @@
 
 <header>
     <nav class="container">
-        <div class="logo">FanDraft</div>
+        <div class="logo">FanDraft Africa</div>
         <ul class="nav-links">
             <li><a href="#features"><span class="fr">Fonctionnalités</span><span class="en">Features</span></a></li>
             <li><a href="#app"><span class="fr">Application</span><span class="en">App</span></a></li>
@@ -932,8 +1485,8 @@
         <div class="app-content">
             <div class="app-text">
                 <h2>
-                    <span class="fr">Ça change</span>
-                    <span class="en">Game-changing app</span>
+                    <span class="fr">L'app qui change la donne</span>
+                    <span class="en">The game-changing app</span>
                 </h2>
                 <p>
                     <span class="fr">Plus qu'une simple app, c'est votre passeport vers les ligues internationales ! Découvrez l'interface qui connecte directement les talents africains aux scouts du monde entier.</span>
@@ -966,8 +1519,102 @@
                     <span class="en">🏀 Join the revolution</span>
                 </a>
             </div>
-            <div class="">
-                <img src="/phone-a.png" alt="">
+            <div class="app-screenshots-slider">
+                <div class="slider-container">
+                    <div class="slides-wrapper" id="slidesWrapper">
+                        <!-- Slide 1 - Remplacez par votre première capture -->
+                        <div class="slide active">
+                            <div class="screenshot-frame">
+                                <img src="image-b.png" alt="FanDraft App Screenshot 1" class="screenshot-img">
+                                <div class="screenshot-overlay">
+                                    <h4>
+                                        <span class="fr">🏀 Écran d'accueil</span>
+                                        <span class="en">🏀 Welcome Screen</span>
+                                    </h4>
+                                    <p>
+                                        <span class="fr">Interface d'onboarding moderne</span>
+                                        <span class="en">Modern onboarding interface</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 2 - Remplacez par votre deuxième capture -->
+                        <div class="slide">
+                            <div class="screenshot-frame">
+                                <img src="image-f.jpeg" alt="FanDraft App Screenshot 2" class="screenshot-img">
+                                <div class="screenshot-overlay">
+                                    <h4>
+                                        <span class="fr">📱 Profils joueurs</span>
+                                        <span class="en">📱 Player Profiles</span>
+                                    </h4>
+                                    <p>
+                                        <span class="fr">Stats détaillées et vidéos</span>
+                                        <span class="en">Detailed stats and videos</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 3 - Remplacez par votre troisième capture -->
+                        <div class="slide">
+                            <div class="screenshot-frame">
+                                <img src="image-d.jpeg" alt="FanDraft App Screenshot 3" class="screenshot-img">
+                                <div class="screenshot-overlay">
+                                    <h4>
+                                        <span class="fr">🔍 Recherche talents</span>
+                                        <span class="en">🔍 Talent Search</span>
+                                    </h4>
+                                    <p>
+                                        <span class="fr">Outils de filtrage avancés</span>
+                                        <span class="en">Advanced filtering tools</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide 4 - Remplacez par votre quatrième capture -->
+                        <div class="slide">
+                            <div class="screenshot-frame">
+                                <img src="image-e.jpeg" alt="FanDraft App Screenshot 4" class="screenshot-img">
+                                <div class="screenshot-overlay">
+                                    <h4>
+                                        <span class="fr">📊 Analytics</span>
+                                        <span class="en">📊 Analytics</span>
+                                    </h4>
+                                    <p>
+                                        <span class="fr">Données en temps réel</span>
+                                        <span class="en">Real-time data</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ajoutez d'autres slides selon vos besoins -->
+                    </div>
+
+                    <!-- Navigation du slider -->
+                    <div class="slider-nav">
+                        <button class="nav-btn prev-btn" onclick="changeSlide(-1)">
+                            <span>❮</span>
+                        </button>
+                        <button class="nav-btn next-btn" onclick="changeSlide(1)">
+                            <span>❯</span>
+                        </button>
+                    </div>
+
+                    <!-- Indicateurs -->
+                    <div class="slider-dots" id="sliderDots">
+                        <!-- Les dots seront générés automatiquement par JavaScript -->
+                    </div>
+                </div>
+
+                <div class="slider-description">
+                    <p>
+                        <span class="fr">🚀 Découvrez l'interface révolutionnaire de FanDraft Africa</span>
+                        <span class="en">🚀 Discover FanDraft Africa's revolutionary interface</span>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -1026,7 +1673,7 @@
 
 <section id="impact" class="impact">
     <div class="container">
-        <h2 class="section-title" style="color: white">
+        <h2 class="section-title">
             <span class="fr">💥 L'impact qui secoue le terrain</span>
             <span class="en">💥 Impact that shakes the court</span>
         </h2>
@@ -1398,6 +2045,74 @@
 
     // Add swoosh effect to interactive elements
     document.querySelectorAll('.cta-button, .feature-card, .audience-card').forEach(addSwooshEffect);
+
+    // Variables globales du slider
+    let currentSlide = 0;
+    let slideInterval;
+
+    function changeSlide(direction) {
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        if (totalSlides === 0) return;
+
+        currentSlide += direction;
+
+        if (currentSlide >= totalSlides) {
+            currentSlide = 0;
+        } else if (currentSlide < 0) {
+            currentSlide = totalSlides - 1;
+        }
+
+        updateSlider();
+        restartAutoplay();
+    }
+
+    function updateSlider() {
+        const slidesWrapper = document.getElementById('slidesWrapper');
+        const slides = document.querySelectorAll('.slide');
+
+        if (!slidesWrapper || slides.length === 0) return;
+
+        const translateX = -currentSlide * 100;
+        slidesWrapper.style.transform = `translateX(${translateX}%)`;
+
+        // Update dots
+        const dots = document.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+
+    function restartAutoplay() {
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+        slideInterval = setInterval(() => changeSlide(1), 4000);
+    }
+
+    // Initialiser au chargement
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.slide');
+        if (slides.length > 0) {
+            // Créer les dots
+            const dotsContainer = document.getElementById('sliderDots');
+            dotsContainer.innerHTML = '';
+
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    updateSlider();
+                    restartAutoplay();
+                });
+                dotsContainer.appendChild(dot);
+            }
+
+            restartAutoplay();
+        }
+    });
 </script>
 </body>
 </html>
